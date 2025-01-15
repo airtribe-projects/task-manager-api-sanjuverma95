@@ -1,0 +1,142 @@
+{
+  "info": {
+    "_postman_id": "50b1aad5-007a-4ad0-a741-66f0722eac9b",
+    "name": "Task Manager API",
+    "description": "# Task Management API\n\nA simple task management API built using Node.js and Express.js. The API allows users to perform CRUD (Create, Read, Update, Delete) operations on tasks.\n\n----------\n\n## Overview\n\nThis API provides the following features:\n\n-   Retrieve all tasks, with an optional filter for completed tasks.\n-   Retrieve a specific task by its ID.\n-   Create a new task.\n-   Update an existing task by its ID.\n-   Delete a task by its ID.\n\nThe tasks are stored in-memory during runtime and are initially loaded from a `task.json` file.\n\n----------\n\n## API Endpoints\n\n1.  **Retrieve All Tasks**\n    \n    -   Endpoint: `GET /tasks`\n    -   Retrieves all tasks. Supports an optional filter to get completed or incomplete tasks.\n    -   Query Parameters: `completed` (optional, \"true\" or \"false\").\n    -   Example: `GET http://localhost:3000/tasks` or `GET http://localhost:3000/tasks?completed=true`\n2.  **Retrieve a Specific Task by ID**\n    \n    -   Endpoint: `GET /tasks/:id`\n    -   Retrieves a task by its ID.\n    -   Example: `GET http://localhost:3000/tasks/1`\n3.  **Create a New Task**\n    \n    -   Endpoint: `POST /tasks`\n    -   Creates a new task with the required fields.\n    -   Request Body:\n        \n        ```json\n        {\n          \"title\": \"New Task\",\n          \"description\": \"Task description\",\n          \"completed\": false\n        }\n        \n        ```\n        \n    -   Example: `POST http://localhost:3000/tasks`\n4.  **Update an Existing Task by ID**\n    \n    -   Endpoint: `PUT /tasks/:id`\n    -   Updates an existing task by its ID.\n    -   Request Body:\n        \n        ```json\n        {\n          \"title\": \"Updated Task\",\n          \"description\": \"Updated description\",\n          \"completed\": true\n        }\n        \n        ```\n        \n    -   Example: `PUT http://localhost:3000/tasks/1`\n5.  **Delete a Task by ID**\n    \n    -   Endpoint: `DELETE /tasks/:id`\n    -   Deletes a task by its ID.\n    -   Example: `DELETE http://localhost:3000/tasks/1`\n\n----------",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "4263020"
+  },
+  "item": [
+    {
+      "name": "Get All Tasks",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}:{{port}}/tasks",
+          "host": ["{{baseURL}}"],
+          "port": "{{port}}",
+          "path": ["tasks"],
+          "query": [
+            {
+              "key": "completed",
+              "value": "true",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Task By ID",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}:{{port}}/tasks/1",
+          "host": ["{{baseURL}}"],
+          "port": "{{port}}",
+          "path": ["tasks", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Task",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Test 1\",\n    \"description\": \"Test 1\",\n    \"completed\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}:{{port}}/tasks",
+          "host": ["{{baseURL}}"],
+          "port": "{{port}}",
+          "path": ["tasks"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Task By ID",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Test 2 Updated\",\n    \"description\": \"Test 2 Updated\",\n    \"completed\": false\n\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}:{{port}}/tasks/4",
+          "host": ["{{baseURL}}"],
+          "port": "{{port}}",
+          "path": ["tasks", "4"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Task By ID",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}:{{port}}/tasks/16",
+          "host": ["{{baseURL}}"],
+          "port": "{{port}}",
+          "path": ["tasks", "16"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseURL",
+      "value": "localhost",
+      "type": "default"
+    },
+    {
+      "key": "port",
+      "value": "3000",
+      "type": "default"
+    }
+  ]
+}
